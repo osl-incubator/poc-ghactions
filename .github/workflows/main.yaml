@@ -23,9 +23,8 @@ jobs:
 
     - uses: docker-practice/actions-setup-docker@master
       with:
-        docker_channel: nightly
-        # this value please see https://github.com/AkihiroSuda/moby-snapshot/releases
-        docker_nightly_version: snapshot-20201109
+        docker_channel: stable
+        docker_version: 20.10
 
     - name: run docker hello-world
       run: |
