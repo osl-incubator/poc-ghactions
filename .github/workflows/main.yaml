@@ -10,7 +10,7 @@ jobs:
   macos:
 
     runs-on: macos-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     strategy:
       matrix:
         python-version: [3.8]
@@ -27,11 +27,11 @@ jobs:
         # this value please see https://github.com/AkihiroSuda/moby-snapshot/releases
         docker_nightly_version: snapshot-20201109
 
-    - name: start docker compose for tests
+    - name: run docker hello-world
       run: |
         docker run hello-world
 
-    - name: install docker-compose
+    - name: install and run docker-compose
       run: |
         brew install docker-compose
         docker-compose up
