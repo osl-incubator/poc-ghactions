@@ -1,0 +1,32 @@
+name: test conditions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  macos:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    env:
+      PYTHON_VERSION: ${{ matrix.python-version }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: release to the quansight conda channel
+      if: startsWith(github.ref, 'push')
+      run: echo "PUSH RECOGNIZED"
+
+    - name: release to the quansight conda channel
+      if: startsWith(github.ref, 'pull_request')
+      run: echo "PULL REQUEST RECOGNIZED"
+
+
