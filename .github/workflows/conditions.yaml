@@ -21,12 +21,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: release to the quansight conda channel
-      if: startsWith(github.ref, 'push')
+    - name: push condition
+      if: startsWith(github.event_name, 'push')
       run: echo "PUSH RECOGNIZED"
 
-    - name: release to the quansight conda channel
-      if: startsWith(github.ref, 'pull_request')
+    - name: pull request condition
+      if: startsWith(github.event_name, 'pull_request')
       run: echo "PULL REQUEST RECOGNIZED"
 
 
