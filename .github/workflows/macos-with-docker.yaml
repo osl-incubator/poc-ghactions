@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  macos:
+  macos-docker:
 
     runs-on: macos-latest
     timeout-minutes: 20
@@ -34,3 +34,33 @@ jobs:
         docker-compose logs
         docker-compose stop
 
+
+  macos-gnu-tools-and-conda:
+    runs-on: macos-latest
+ 
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    env:
+      PYTHON_VERSION: ${{ matrix.python-version }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: ${{ matrix.python-version }}
+        activate-environment: environment.yaml
+        channels: conda-forge
+
+    - name: test simple gnu command line
+      # shell: bash -l {0}
+      run: |
+        mkdir -p /tmp/path1
+        ln -s /tmp/path1 /tmp/path1-link
+        rm -rf /tmp/path1-link
+        rm -rf /tmp/path1
