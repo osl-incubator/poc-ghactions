@@ -8,7 +8,7 @@ on:
 jobs:
   scrape_harvest_data_env:
     name: Scrape Harvest Data Environment
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     steps:
       # Checkout the repo on the github action runner
       - name: Checkout Repo
