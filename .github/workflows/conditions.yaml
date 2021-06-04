@@ -22,7 +22,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: push condition
-      if: startsWith(github.event_name, 'push')
+      if: startsWith(github.event_name, 'push') && sucess()
       run: echo "PUSH RECOGNIZED"
 
     - name: pull request condition
