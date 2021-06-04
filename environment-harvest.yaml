@@ -1,0 +1,20 @@
+channels:
+  - conda-forge
+dependencies:
+  - git
+  - python >= 3.7
+  - pandas
+  - pyarrow
+  - snappy # data compression
+  - s3fs
+  - python-dotenv
+  - ansible # deployment
+  - pytest
+  - pip < 20.3
+  - pre-commit
+  - libthrift < 0.14.1  # 0.14.1 broke pyarrow.  Maybe fixed in the future.
+  - pip:
+    - git+https://github.com/Quansight/tap-harvest-forecast.git@cdilga/hotfix/forecast-issue-13
+    - tap-harvest
+    - target-sqlite
+

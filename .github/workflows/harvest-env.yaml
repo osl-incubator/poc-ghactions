@@ -1,0 +1,23 @@
+name: Scrape Harvest Data Environment
+
+on:
+  push: ["*"]
+
+jobs:
+  scrape_harvest_data_env:
+    name: Scrape Harvest Data Environment
+    runs-on: linux-latest
+    steps:
+      # Checkout the repo on the github action runner
+      - name: Checkout Repo
+        uses: actions/checkout@v2.3.1
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          mamba-version: "*"
+          environment-file: environment-harvest.yml
+          channels: conda-forge
+          activate-environment: scrape
+          use-mamba: true
+          miniforge-variant: Mambaforge
