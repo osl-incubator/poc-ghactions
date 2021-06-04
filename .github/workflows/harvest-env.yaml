@@ -1,7 +1,9 @@
 name: Scrape Harvest Data Environment
 
 on:
-  push: ["*"]
+  push:
+    branches: [ main ]
+
 
 jobs:
   scrape_harvest_data_env:
