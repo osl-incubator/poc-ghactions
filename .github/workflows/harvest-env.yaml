@@ -18,7 +18,7 @@ jobs:
         with:
           miniconda-version: "latest"
           mamba-version: "*"
-          environment-file: environment-harvest.yml
+          environment-file: environment-harvest.yaml
           channels: conda-forge
           activate-environment: scrape
           use-mamba: true
